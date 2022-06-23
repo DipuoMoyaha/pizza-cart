@@ -1,0 +1,233 @@
+
+
+@media (min-width:470px){
+    body{ 
+background-color:lightyellow;
+    }
+ .Pizzas{
+    justify-content: center;
+ }
+   
+}
+   @media(min-width:967px) {
+     body {
+   background-color: silver ;
+     }
+   .Pizzas{
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 5%;
+   }
+   
+   }
+   
+   .cart{
+    background-color: powderblue;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.cart button{
+    background-color: floralwhite;
+    border: none;
+    color: black;
+    padding: 4px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;  
+    border-radius: 5px;
+
+}
+.p1{
+    margin: 5px;
+    padding: 5px;
+}
+.p2{
+    margin: 5px;
+    padding: 5px;
+}
+.p3{
+    margin: 5px;
+    padding: 5px;
+}
+.t4{
+    margin: 5px;
+    padding: 5px;
+}
+.b5{
+    margin: 5px;
+    padding: 5px;
+}
+.cart-button{
+ margin-left: 90%;
+ margin-top: 2%;
+
+}
+ tr, td{
+    border: 1px solid;
+    padding:10px;
+
+    
+}
+table.cart-table{
+margin-left: auto; 
+ margin-right: auto;
+}
+.payment{
+    margin: 5px;
+}
+.close{
+    margin-right: 90%;
+}
+.pizza1{
+    height: 403px;
+   width: 292px;
+   left: -340px;
+   top: -210px;
+   border-radius: 0px;
+   border: 1em;
+   margin: 1em;
+   background-color: powderblue;
+   padding: 1em; 
+   
+   }
+   .pizza2{
+   height: 403px;
+   width: 299px;
+   left: -36px;
+   top: -210px;
+   border-radius: 0px;
+    border: 1em;
+    margin: 1em;
+   background-color: powderblue;
+    padding: 1em;  
+   
+   }
+   .pizza3{
+   height: 403px;
+   width: 292px;
+   left: 273px;
+   top: -210px;
+   border-radius: 0px;
+   border: 1em;
+   margin: 1em;
+   background-color: powderblue;
+   padding: 1em; 
+   
+   }
+   
+   h1{
+   text-align: center;
+   font-family: Roboto;
+   font-size: 24px;
+   font-weight: 700;
+   line-height: 28px;
+   letter-spacing: 0em;
+   background-color: lightgray;
+   }
+   
+   h2{
+   text-align: center;
+   font-family: Roboto;
+   font-size: 20px;
+   font-weight: 700;
+   line-height: 28px;
+   letter-spacing: 0em;
+   }
+   
+   
+   p {
+   font-family: Roboto;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 16px;
+   letter-spacing: 0em;
+   text-align:left;
+   
+   
+   }
+   .pizza2 p{
+    margin-top: 20%;
+   }
+   .pizza3 p{
+    margin-top: 20%;
+   }
+
+   img{
+   height: 80px;
+   width: 110px;
+   left: -862px;
+   top: 130px;
+   border-radius: 0px;
+   float: right;
+   margin: auto;
+   }
+   
+   .down{
+   height: 121px;
+   border-radius: 0px;
+   background-color: honeydew;
+   justify-content: space-between;
+   display: flex;
+   padding: 1em;
+   margin-bottom: 30px;
+   margin-top: 60px;
+   }
+   
+   .bottom1{
+   font-family: Roboto;
+   font-size: 12px;
+   font-weight: 700;
+   line-height: 14px;
+   letter-spacing: 0em;
+   text-align: left;
+   
+   
+   }
+   .bottom2{
+   font-family: Roboto;
+   font-size: 12px;
+   font-weight: 700;
+   line-height: 14px;
+   letter-spacing: 0em;
+   /*text-align: end;*/
+   
+   }  
+   
+   
+   .MediumPizza{
+     width: 150px;
+     height: 130px;
+   }
+   .LargePizza{
+     width: 160px;
+     height: 140px;
+   }
+   .SmallPizza{
+    width: 160px;
+   height: 140px;
+   }
+   button{
+    background-color: floralwhite;
+    border: none;
+    color: black;
+    padding: 6px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 5px;
+    
+   }
+   .cart-button strong{
+justify-content: end;
+   }
+   
+  
+
+   
+   
+   
+   
