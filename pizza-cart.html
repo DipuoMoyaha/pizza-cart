@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><link rel="stylesheet" href="style.css"> 
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+<body>
+    <div class="Container" x-data="{
+        openCart:false, 
+        smallTotal: 0.00, 
+        smallQty:0, 
+        mediumTotal:0.00, 
+        mediumQty:0,
+        largeTotal:0.00,
+        largeQty:0,
+        totalQty:0,
+        payNow: false,
+        paymentAmount: 0.00,
+        paymentMessage: '',
+        cartTotal() {
+            return this.smallTotal + this.mediumTotal + this.largeTotal;
+        },
+        totalQty() {
+            return this.smallQty + this.mediumQty + this.largeQty;
+        },
+        buySmall() {
+            this.smallTotal += 56.99;
+            this.smallQty += 1
+        },
+        clearSmall() {
+            if (this.smallQty > 0) {
+                this.smallTotal -= 56.99;
+                this.smallQty -= 1
+            }
+            
+        },
+        buyMedium() {
+            this.mediumTotal += 78.99;
+            this.mediumQty += 1
+        },
+        clearMedium() {
+            if (this.mediumQty > 0) {
+                this.mediumTotal -= 78.99;
+                this.mediumQty -= 1
+            }
+            
+        },
+        buyLarge() {
+            this.largeTotal += 119.99;
+            this.largeQty += 1
+        },
+        clearLarge() {
+            if (this.largeQty > 0) {
+                this.largeTotal -= 119.99;
+                this.largeQty -= 1
+            }
+            
+        },
+        makePayment() {
+            if(this.paymentAmount >= this.cartTotal() ){
+                this.paymentMessage = 'Enjoy your Pizzas'
+                setTimeout(() =>{
+                    this.payNow=false;
+                    this.clearCart()
+                }, 1000);
+                
+            } else{
+                this.paymentMessage = 'Sorry-that is not enough money'
+            }
+        },
+        clearCart() {
+            this.smallTotal = 0.00;
+            this.smallQty = 0;
+            this.mediumTotal = 0.00;
+            this.mediumQty = 0;
+            this.largeTotal = 0.00;
+            this.largeQty = 0;
+        },
+        hideCart() {
+            if(this.cartTotal() > 0) {
+                return true
+            } else {
+               return true
+            }
+        }
+    }">
+    
+       
+        
+
+    <h1>Monate Pizza</h1>
+        
+        <button x-on:click="openCart =!openCart" x-show="hideCart()" class="cart-button">
+            Cart
+            <strong x-show="totalQty() > 0"><span x-text="totalQty()" ></span></strong>
+        </button>
+        
+        
+        <div class="cart" x-show="openCart">
+        
+                    <h1>Shopping Cart</h1>
+                
+            <div class="cart-box">
+                <div class="cart"x-show="openCart" >
+                     
+                     <table>
+               
+                        <tr x-show="smallQty > 0">
+                            <td>Small</td>
+                            <td>
+                                <span x-text="smallQty"></span>
+                                <button x-on:click="buySmall" x-show="smallQty > 0" >+</button>
+                                <button x-on:click="clearSmall" x-show="smallQty > 0" >-</button>
+                            </td>
+                            <td>
+                                R<span x-text="smallTotal.toFixed(2)"></span>
+                            </td>
+                        </tr>
+                        <tr x-show="mediumQty > 0">
+                            <td>Medium</td>
+                            <td>
+                                <span x-text="mediumQty"></span>
+                                <button x-on:click="buyMedium" x-show="mediumQty > 0">+</button>
+                                <button x-on:click="clearMedium" x-show="mediumQty > 0">-</button>
+                            </td>
+                            <td>
+                                R<span x-text="mediumTotal.toFixed(2)"></span>
+                            </td>
+                        </tr>
+                        <tr x-show="largeQty > 0">
+                            <td>Large</td>
+                            <td>
+                                <span x-text="largeQty"></span>
+                                <button  x-on:click="buyLarge" x-show="largeQty > 0">+</button>
+                                <button x-on:click="clearLarge" x-show="largeQty > 0">-</button>
+                            </td>
+                            <td>
+                                R<span x-text="largeTotal.toFixed(2)"></span>
+                            </td>
+                        </tr>
+                        <tr x-show="cartTotal() > 0" >
+                            <td colspan="2">Total</td>
+                            <td>
+                
+                                R<span x-text="cartTotal().toFixed(2)"></span>
+                            </td>
+    
+                        </tr>
+                        <tr>
+                            <td>
+                                <button x-show="!payNow" x-on:click="payNow=true"  class="btn" >
+                                    Proceed to Checkout</button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div x-show="payNow">
+                                    <div class="message" x-text="paymentMessage">Message...</div>
+                                    <div>
+                                        <ul style="list-style-type: none;">
+                                        <li><label for="cash"><input id="cash" type="checkbox" name="payment-option"> Cash</label></li>
+                                        <li><label for="card"><input id="card" type="checkbox" name="payment-option"> Card</label></li>
+                                        <label for="">Payment amount</label>
+                                        </ul>
+                                        <input class="input" type="number" placeholder="Payment amount"
+                                            x-model="paymentAmount">
+                                    </div>
+                                    <div>
+                                        <button x-on:click="makePayment, openCart= false" class="btn">Pay</button>
+                                    </div>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        
+                </table>
+                </div>
+                
+            </div>
+           
+        </div>
+        
+    
+        <div class="Pizzas">
+        
+        <div id="myDiv" class="Pizzass">
+            <div class="pizza1">
+                <img src="image-1.jpg" class="MediumPizza" alt="">
+                <h1> Medium Pizza </h1>
+  
+                <h2> R78.99</h2>
+                <div class="round">
+              <p> Medium margeritha pizza with 3 toppings max. 2 or less meat topping. 3 or less other toppings. <br> Medium barbeque chicken with 3 toppings max. </p>
+              <ul style="list-style-type: none;"> <strong>Toppings </strong>
+                  <li><label for="sausage"><input id="sausage" type="checkbox" name="Toppings"> Pork sausage</label></li>
+                  <li><label for="tomatoes"><input id="tomatoes" type="checkbox" name="Toppings"> Roasted Tomatoes</label></li>
+                  <li><label for="peperoni"><input id="peperoni" type="checkbox" name="Toppings"> Peperoni</label></li>
+                  <li><label for="cheese"><input id="cheese" type="checkbox" name="Toppings"> Extra cheese</label></li>
+                  <li><label for="chilli"><input id="chilli" type="checkbox" name="Toppings"> Jalapeno chilli cheese</label></li>
+                </ul>
+                </div>
+
+
+                    <button class="buy-btn" x-on:click="smallTotal += 39.99; smallQty +=1 ">
+                        Buy</button>
+                </div>
+            </div>
+
+            <div class="pizza2">
+                <img src="image-2.jpg" class="LargePizza"  alt="">
+                <h1>Large Pizza </h1>
+                <h2> R119.99</h2>
+                <div class="round">
+                <p> Large margeritha pizza with 3 toppings max. 3 meat toppings max. 3 or less other toppings. <br>Large barbeque chicken with 3 toppings max.  </p>
+                <ul style="list-style-type: none;"> <strong>Toppings </strong>
+                    <li><label for="sausage"><input id="sausage" type="checkbox" name="Toppings"> Pork sausage</label></li>
+                    <li><label for="tomatoes"><input id="tomatoes" type="checkbox" name="Toppings"> Roasted Tomatoes</label></li>
+                    <li><label for="peperoni"><input id="peperoni" type="checkbox" name="Toppings"> Peperoni</label></li>
+                    <li><label for="cheese"><input id="cheese" type="checkbox" name="Toppings"> Extra cheese</label></li>
+                    <li><label for="chilli"><input id="chilli" type="checkbox" name="Toppings"> Jalapeno chilli cheese</label></li>
+                  </ul>
+                  </div>
+                <button class="buy-btn" x-on:click="mediumTotal += 79.99; mediumQty +=1 ">
+                    Buy</button>
+            </div>
+
+            <div class="pizza3">
+                <img src="image-3.jpg" class="SmallPizza" alt="">
+                <h1>Small Pizza</h1>
+                <h2> R56.99 </h2>
+                <div class="round">
+                <p>Small pizza with 3 toppings 1 meat topping. 3 or less other toppings. <br>Small barbeque chicken with 3 toppings max.  </p>
+                <ul style="list-style-type: none;"> <strong>Toppings </strong>
+                    <li><label for="sausage"><input id="sausage" type="checkbox" name="Toppings"> Pork sausage</label></li>
+                    <li><label for="tomatoes"><input id="tomatoes" type="checkbox" name="Toppings"> Roasted Tomatoes</label></li>
+                    <li><label for="peperoni"><input id="peperoni" type="checkbox" name="Toppings"> Peperoni</label></li>
+                    <li><label for="cheese"><input id="cheese" type="checkbox" name="Toppings"> Extra cheese</label></li>
+                    <li><label for="chilli"><input id="chilli" type="checkbox" name="Toppings"> Jalapeno chilli cheese</label></li>
+                  </ul>
+                  </div>
+                <button class="buy-btn" x-on:click="largeTotal += 168.99; largeQty +=1 ">
+                    Buy</button>
+            </div>
+                
+        </div>
+        </div>
+        <div class="down"> 
+            <div class="bottom1"> Contact us at: (021)-541-1000 <br> twitter <br> /fb <br> /insta <br> @monatepizza
+              </div> 
+              <div class="bottom2">Monate Pizza <br> 02 Staib Street <br> Maboneng
+               </div>
+               </div>
+
+    </div>
+        
+</body>  
+</html>
